@@ -13,7 +13,7 @@
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License
- *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 (function ( $ ) {
 	$.fn.horizontalShowcase = function( options ) {
@@ -23,32 +23,40 @@
 
 		// Specified element's width
 		var $els = this.find(opts.elSelector);
-		opts.elSpace = opts.elSpace || opts.elSpaceRight + opts.elSpaceLeft;
-		opts.elSize = (opts.elSize || $els.first().width()) + opts.elSpace;
-		$els.width(opts.elSize);
+		$els.width(opts.elWidth);
+		opts.elWidth = opts.elWidth + opts.elInterWidth; // We formally think that the element is even with padding and border
+		if(!opts.elHeight) {
+			var maxVal = -1;
+			$els.each(function() {
+				var h = $(this).height(); 
+				maxVal = h > maxVal ? h : maxVal;
+				console.log("Heiht: " + h);
+			});
+			opts.elHeight = maxVal;
+		}
+		$els.height(opts.elHeight);
 
-		opts.step = opts.step || opts.windowEls;
+		opts.step = opts.step || opts.els;
 
 		// Specified window's width
-		opts.windowSize = opts.windowSize || opts.windowEls * opts.elSize;
-		this.find(opts.windowSelector).width(opts.windowSize);
+		opts.width = opts.width || opts.els * opts.elWidth;
+		this.find(opts.windowSelector).width(opts.width).height(opts.elHeight + opts.elInterHeight); // We formally think that the window is even with padding and borders of the elements
 
 		// Calculated container's width
 		var $container = this.find(opts.containerSelector);
-		var containerWidth = $els.length * opts.elSize;
+		var containerWidth = $els.length * opts.elWidth;
 		$container.width(containerWidth);
-		console.log($container);
 
 		// Calculated scroll limit (when you can see the last part of the container and it can turn around)
-		var slideLimit = opts.windowSize - containerWidth;
+		var slideLimit = opts.width - containerWidth;
 
-		var $btnBack = this.find(opts.btnBackSelector);
+		var $btnBack = this.find(opts.actionBackSelector);
 		$btnBack.click(function(event) {
 			restartInterval();
 
 			var x = $container.position();
 			var y = x.left;
-			var yy = y + opts.elSize * opts.step;
+			var yy = y + opts.elWidth * opts.step;
 
 			if(opts.preventDefault) {
 				event.preventDefault();
@@ -60,13 +68,13 @@
 
 			opts.__animating = true;
 			opts.click.call(this, $showcase);
-				$container.animate({left: yy}, opts.delay, function() {
+			$container.animate({left: yy}, opts.delay, function() {
 				opts.__animating = false;
 				opts.done.call($btnBack, $showcase);
 			});
 		});
 
-		var $btnForward = this.find(opts.btnForwardSelector);
+		var $btnForward = this.find(opts.actionForwardSelector);
 		var restartInterval = function() {
 			if(opts.interval) {
 				if(opts.__intervalID) {
@@ -78,28 +86,28 @@
 			}
 		};
 		$btnForward.click(function(event) {
-		    restartInterval();
+			restartInterval();
 
-		    var x = $container.position();
-		    var y = x.left;
-		    var yy = y - opts.elSize * opts.step;
-		    var turnAround = y <= slideLimit;
-		    var value = (turnAround) ? 0 : yy;
+			var x = $container.position();
+			var y = x.left;
+			var yy = y - opts.elWidth * opts.step;
+			var turnAround = y <= slideLimit;
+			var value = (turnAround) ? 0 : yy;
 
-		    if(opts.preventDefault) {
-			event.preventDefault();
-		    }
+			if(opts.preventDefault) {
+				event.preventDefault();
+			}
 
-		    if(turnAround && opts.oveflow === false || opts.__animating === true) {
-			return;
-		    }
+			if(turnAround && opts.oveflow === false || opts.__animating === true) {
+				return;
+			}
 
-		    opts.__animating = true;
-		    opts.click.call(this, $showcase);
-		    $container.animate({left: value}, (turnAround) ? opts.overflowDelay : opts.delay, function() {
-			opts.__animating = false;
-			opts.done.call($btnForward, $showcase);
-		    });
+			opts.__animating = true;
+			opts.click.call(this, $showcase);
+			$container.animate({left: value}, (turnAround) ? opts.overflowDelay : opts.delay, function() {
+				opts.__animating = false;
+				opts.done.call($btnForward, $showcase);
+			});
 		});
 
 		restartInterval();
@@ -107,29 +115,25 @@
 		return this;
 	};
 	$.fn.horizontalShowcase.defaults = {
-		elSelector: ".show-el",
-		containerSelector: ".show-container",
 		windowSelector: ".show-window",
-		btnBackSelector: ".show-back",
-		btnForwardSelector: ".show-forward",
-		preventDefault: false, /* prevent events after clicking on the link|button */
-		preventFlood: true, /* prevent click during existing animation */
-		click: function(orizhontalShowcase) { /* fired when clicking on a button */
-		    // $(this) is the button
-		},
-		done: function(orizhontalShowcase) { /* fired when animation ends */
-		    // $(this) is the button
-		},
-		elSize: 400, /* element width */
-		elSpaceLeft: 0, /* manually insert this sum: border-left + padding-left */
-		elSpaceRight: 0, /* manually insert this sum: border-right + padding-right */
-		elSpace: undefined, /* manually insert this sum: border-left + padding-left + border-right + padding-right (this override the above options) */
-		delay: 200, /* scroll animation */
-		overflow: true, /* enable turn around */
-		overflowDelay: 500, /* turn around scroll animation */
-		step: undefined, /* how many elements to scroll (ca be float) */
-		interval: undefined, /* set an interval in ms */
-		windowSize: undefined, /* window size specified in px */
-		windowEls: 1 /* window size specified in n° of elements (this override the above option) */
+		containerSelector: ".show-container",
+		elSelector: ".show-el",
+		actionBackSelector: ".show-back",
+		actionForwardSelector: ".show-forward",
+		preventDefault: false,
+		preventFlood: true,
+		click: function(orizhontalShowcase) {},
+		done: function(orizhontalShowcase) {},
+		elWidth: 250,
+		elHeight: undefined,
+		elInterWidth: 0,
+		elInterHeight: 0,
+		delay: 200,
+		overflow: true,
+		overflowDelay: 500,
+		step: undefined,
+		interval: undefined,
+		width: undefined,
+		els: 1
 	};
 }( jQuery ));

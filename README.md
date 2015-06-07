@@ -10,25 +10,29 @@ Please, read carefully: I've wrote «AFFERO». Read carefully it.
 ### Usage
 It's really simple.
 ```html
-	<div class="showcase">
-		<button class="show-back float-left">Back</button>
-		<div class="show-window">
-			<div class="show-container">
-				<div class="show-el">Hello, world!</div>
-				<div class="show-el">GNU/Linux</div>
-				<div class="show-el">GNU/Hurd</div>
-				<div class="show-el">Debian/Linux</div>
-				<div class="show-el">Debian/Hurd</div>
-			</div>
-		</div>
-		<button class="show-forward float-left">Forward</button>
-	</div>
+<!-- Importing jQuery -->
+<!-- Importing this horizontal-showcase.js -->
+<!-- Importing 8 CSS rules -->
 
-	<script>
-	$(document).ready(function() {
-		$(".showcase").horizontalShowcase();
-	});
-	</script>
+<div class="showcase">
+	<button class="show-back float-left">Back</button>
+	<div class="show-window">
+		<div class="show-container">
+			<div class="show-el">Hello, world!</div>
+			<div class="show-el">GNU/Linux</div>
+			<div class="show-el">GNU/Hurd</div>
+			<div class="show-el">Debian/Linux</div>
+			<div class="show-el">Debian/Hurd</div>
+		</div>
+	</div>
+	<button class="show-forward float-left">Forward</button>
+</div>
+
+<script>
+$(document).ready(function() {
+	$(".showcase").horizontalShowcase();
+});
+</script>
 ```
 
 Lot of options as (they are not all):
@@ -57,3 +61,6 @@ $(".showcase").horizontalShowcase({
 
 ### The CSS
 Really, see the file. There are 8 CSS rules.
+
+### Credits.
+Thanks to http://jsfiddle.net/JQZ29/24/ for little clarifications.

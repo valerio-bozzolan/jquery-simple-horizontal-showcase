@@ -13,7 +13,7 @@
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License
- *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 /*
@@ -25,31 +25,18 @@
 	padding:0;
 }
 .showcase .show-window {
-	float:left;
-	position: relative;
-	overflow: hidden;
+	position:relative;
+	overflow:hidden;
 }
 .showcase .show-container {
-	position: absolute; 
+	position:absolute; 
 }
 .showcase .show-el {
-	float: left;
+	float:left;
 }
-
-
-
-
-
-/* EXTRA STYLE */
-.showcase .show-window,
-.showcase .show-el {
-	height: 100px;
+.clear-both {
+	clear:both;
 }
-.showcase .show-el {
-	background:grey;
-	width: 100px;
-}
-
 .float-left {
 	float:left;
 }

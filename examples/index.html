@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>horizontal-showcase (jQuery plugin)</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="../horizontal-showcase.js"></script>
+	<link href="../horizontal-showcase.css" media="all" rel="stylesheet" />
+	<style type="text/css" media="screen">
+		body {width:700px; margin:auto;}
+		code {background-color:#abc;}
+		.showcase .show-el {background-color:#abc;}
+		.gray {background-color:gray !important;}
+		.red {background-color:red !important; }
+		.yellow {background-color:yellow !important;}
+		.pink {background-color:pink !important;}
+		.space-up {padding-top:100px !important;}
+	</style>
+</head>
+<body>
+	<h1>Horizontal-showcase (jQuery plugin)</h1>
+
+	<h2>Examples</h2>
+
+	<!--
+		Example 1
+	-->
+	<h3>Without any option</h3>
+	<p>This is the default behavior.</p>
+	<p>The width is fixed to a default value (as you see). Instead, the height grows to the max height in the elements.</p>
+	<p>Called using:<br />
+		<code>
+			$("#example-1").horizontalShowcase();
+		</code>
+	</p>
+
+	<div class="showcase" id="example-1">
+		<button class="show-back float-left">Back</button>
+		<div class="show-window float-left">
+			<div class="show-container">
+				<div class="show-el">
+					<h3>GNU</h3>
+					<blockquote>«Ghnoo»</blockquote>
+					<p>The first Free as in Freedom UNIX-like operating system. It was created by Richard Stallman in 1984.</p>
+				</div>
+				<div class="show-el">
+					<h3>Linux</h3>
+					<blockquote>«Linocs»</blockquote>
+					<p>The most widely used kernel for UNIX-like operating systems (as GNU). Created by Linus Torvalds in 1991.</p>
+				</div>
+				<div class="show-el">
+					<h3>GNU/Linux</h3>
+					<blockquote>«Ghnoo <small>plus</small> Linocs»</blockquote>
+					<p>In the 99.99% of cases, when you're talking about "Linux", you are talking about GNU/Linux.<br /> But nobody give a fu** to this clarification.</p>
+					<p>But please think about it: Can a penguin contain a gno? Nope. So Debian, Ubuntu, OpenSuse, etc. are <b>GNU/Linux</b> distributions.</p>
+				</div>
+				<div class="show-el">
+					<h3>Hurd</h3>
+					<p>The Hurd project was started by Richard Stallman in 1990, to develop a microkernel harchitecture. It's a very technically interesting project but its development proceeds very slowly.</p>
+					<p>Mainly only exists Debian/Hurd as usable <b>GNU/Hurd</b> distribution.</p>
+				</div>
+			</div>
+		</div>
+		<button class="show-forward float-left">Forward</button>
+	</div>
+	<script>
+		$(document).ready(function(e) {
+			$("#example-1").horizontalShowcase();
+		});
+	</script>
+
+	<div class="clear-both space-up"></div>
+
+
+
+	<!--
+		Example 2
+	-->
+	<h3>Specified elements in window</h3>
+	<p>You can set the n° of elements in the single "window". As default, the scroll scrolls as this value (so here two-by-two).</p>
+	<p>Called using:<br />
+		<code>
+			$("#example-2").horizontalShowcase({ els: 2 });
+		</code>
+	</p>
+
+	<div class="showcase" id="example-2">
+		<button class="show-back float-left">Back</button>
+		<div class="show-window float-left">
+			<div class="show-container">
+				<div class="show-el">
+					<h3>Mozilla Firefox</h3>
+					<p>Package: <code>firefox</code></p>
+				</div>
+				<div class="show-el">
+					<h3>Chromium</h3>
+					<p>Package: <code>chromium-browser</code></p>
+				</div>
+				<div class="show-el">
+					<h3>Iceweasel</h3>
+					<p>A Mozilla Firefox fork. 100% Free as in Freedom.</p>
+					<p>Package: <code>iceweasel</code></p>
+				</div>
+				<div class="show-el">
+					<h3>Epiphany</h3>
+					<p>Package: <code>epiphany</code></p>
+				</div>
+				<div class="show-el">
+					<h3>Surf</h3>
+					<p>Package: <code>surf</code></p>
+				</div>
+			</div>
+		</div>
+		<button class="show-forward float-left">Forward</button>
+	</div>
+	<script>
+		$(document).ready(function(e) {
+			$("#example-2").horizontalShowcase({
+				els: 2
+			});
+		});
+	</script>
+
+	<div class="clear-both space-up"></div>
+
+
+
+	<!--
+		Example 3
+	-->
+	<h3>Interval, step, delay, ..</h3>
+	<p>You can set an interval. You can also set a step (step: elements to scroll. It can also be float!).</p>
+	<p>The interval fires <b>only</b> if the user "sleep". This is reeeeeeeeeeeeally friendly.</p>
+	<p>Called using:<br />
+		<code>
+			$("#example-3").horizontalShowcase({<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;els: 2,<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;interval: 3000,<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;step: 1,<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;delay:1000,<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;overflowDelay:1000<br />
+			});
+		</code>
+	</p>
+
+	<div class="showcase" id="example-3">
+		<button class="show-back float-left">Back</button>
+		<div class="show-window float-left">
+			<div class="show-container">
+				<div class="show-el">
+					<h3>F-Droid</h3>
+					<p>A Free as in Freedom app-repository for Android.</p>
+				</div>
+				<div class="show-el">
+					<h3>BusTO <small>in F-Droid!</small></h3>
+					<p>Arrival times for all public transport in Turin</p>
+					<p>by Valerio Bozzolan & contributors.</p>
+				</div>
+				<div class="show-el">
+					<h3>MineSweeper <small>in F-Droid!</small></h3>
+					<p>A JavaScript implementation of what you think.</p>
+					<p>by Valerio Bozzolan & contributors.</p>
+				</div>
+				<div class="show-el">
+					<h3>Fennec <small>in F-Droid!</small></h3>
+					<p>A fork of Mozilla Firefox to be 100% Free as in Freedom.</p>
+				</div>
+				<div class="show-el">
+					<h3>Acrylic Paint <small>in F-Droid!</small></h3>
+					<p>Simple painting for Android smartphones.</p>
+					<p>by Valerio Bozzolan & contributors.</p>
+				</div>
+			</div>
+		</div>
+		<button class="show-forward float-left">Forward</button>
+	</div>
+	<script>
+		$(document).ready(function(e) {
+			$("#example-3").horizontalShowcase({
+				els: 2,
+				interval: 3000,
+				step: 1,
+				delay:1000,
+				overflowDelay:1000
+			});
+		});
+	</script>
+
+	<div class="clear-both space-up"></div>
+
+
+	<!--
+		Example 4
+	-->
+	<h3>Element size</h3>
+	<p>You can set the width of your elements (it will be the same for every element...). The height is automatically calculated, but you can also set it manually.</p>
+	<p>In this example I've also set a <code>float</code> step (here ~1/3=0.3333 peridic, plus a little to turn around at the end of the last element, instead of turn around at the end of the unexisting element after the last element). I've added some colors to show how <code>step</code> works.</p>
+	<p>Called using:<br />
+		<code>
+			$("#example-4").horizontalShowcase({<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;elWidth: 40,<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;elHeight: 40,<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;step: 0.333334<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;});
+		</code>
+	</p>
+
+	<div class="showcase" id="example-4">
+		<button class="show-back float-left">Back</button>
+		<div class="show-window float-left">
+			<div class="show-container">
+				<div class="show-el red">A</div>
+				<div class="show-el green">B</div>
+				<div class="show-el gray">C</div>
+				<div class="show-el yellow">D</div>
+				<div class="show-el pink">E</div>
+			</div>
+		</div>
+		<button class="show-forward float-left">Forward</button>
+	</div>
+	<script>
+	$(document).ready(function(e) {
+		$("#example-4").horizontalShowcase({
+			elWidth: 40,
+			elHeight: 40,
+			step: 0.333334
+		});
+	});
+	</script>
+
+	<div class="clear-both space-up"></div>
+
+
+	<!--
+		Example 5
+	-->
+	<h3>Custom CSS, custom actions</h3>
+	<p>You can set padding and border directly to your <code>.show-el</code> but you have to explain them via options.</p>
+	<p>In this example I've used this CSS rule: <code>#example-5 .show-el {border:10px solid black; padding:30px 40px;}</code>, so if I know CSS, I have to explain that there are 20px (10*2) as horizontal border plus 80px (40*2) as horizontal padding = <code>elInterWidth: 100</code>. Also there are 20px (10*2) as vertical border plus 60px (30*2) as vertical padding = <code>elInterHeight: 80</code>. It's really simple.</p>
+	<p>I've also used custom links instead of buttons, so I've set <code>preventDefault: true</code> in order to avoid addresses.</p>
+	<p>Called using:<br />
+		<code>
+			$("#example-5").horizontalShowcase({<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;elInterWidth: 100,<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;elInterHeight: 80,<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;preventDefault: true<br />
+			});
+		</code>
+	</p>
+
+	<div class="showcase" id="example-5">
+		<a href="#" class="show-back float-left">Back</a>
+		<div class="show-window float-left">
+			<div class="show-container">
+				<div class="show-el red">A</div>
+				<div class="show-el green">B</div>
+				<div class="show-el gray">C</div>
+				<div class="show-el yellow">D</div>
+				<div class="show-el pink">E</div>
+			</div>
+		</div>
+		<a href="#" class="show-forward float-left">Forward</a>
+	</div>
+	<script>
+		$(document).ready(function(e) {
+			$("#example-5").horizontalShowcase({
+				elInterWidth: 100,  /* padding-left + padding-right + border-left + border-right */
+				elInterHeight: 80,  /* padding-top + padding-bottom + border-left + border-right */
+				preventDefault: true
+			});
+		});
+	</script>
+	<style type="text/css" media="screen">
+		#example-5 .show-el {
+			border:10px solid black;
+			padding:30px 40px;
+		}
+	</style>
+
+	<div class="clear-both space-up"></div>
+
+
+
+	<!--
+		Example 6
+	-->
+	<h3>Custom callbacks</h3>
+	<p>E.g. you can disable buttons when animation is running.</p>
+	<p>Called using:<br />
+		<code>
+			$("#example-6").horizontalShowcase({<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;click: function() {<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$(this).prop("disabled", true)<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;},
+			&nbsp;&nbsp;&nbsp;&nbsp;done: function() {<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$(this).prop("disabled", false)<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+			});
+		</code>
+	</p>
+
+	<div class="showcase" id="example-6">
+		<button class="show-back float-left">Back</button>
+		<div class="show-window float-left">
+			<div class="show-container">
+				<div class="show-el red">A</div>
+				<div class="show-el green">B</div>
+				<div class="show-el gray">C</div>
+				<div class="show-el yellow">D</div>
+				<div class="show-el pink">E</div>
+			</div>
+		</div>
+		<button class="show-forward float-left">Forward</button>
+	</div>
+	<script>
+		$(document).ready(function(e) {
+			$("#example-6").horizontalShowcase({
+				click: function() {
+					$(this).prop("disabled", true);
+				},
+				done: function() {
+					$(this).prop("disabled", false);
+				}
+			});
+		});
+	</script>
+	<style type="text/css" media="screen">
+		#example-5 .show-el {
+			border:10px solid black;
+			padding:30px 40px;
+		}
+	</style>
+
+	<div class="clear-both space-up"></div>
+
+
+
+	<h2>Documentation</h2>
+
+	<h3>Table of options</h3>
+	<table border="1">
+		<thead>
+			<tr>
+				<th></th>
+				<th>Option</th>
+				<th>Type</th>
+				<th>Default</th>
+				<th>Description</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th rowspan="13">Interesting</th>
+				<td>click</td>
+				<td>callback</td>
+				<td>function(orizhontalShowcase) {}</td>
+				<td>This function is called when clicking on the scroll back / scroll forward action. <code>$(this)</code> is the action (the button or the link) clicked. <code>$(orizhontalShowcase)</code> is the entire showcase.</td>
+			</tr>
+			<tr>
+				<td>done</td>
+				<td>callback</td>
+				<td>function(orizhontalShowcase) {}</td>
+				<td>This function is called after a click when the scroll animation finishes. <code>$(this)</code> is the action (the button or the link) clicked. <code>$(orizhontalShowcase)</code> is the entire showcase.</td>
+			</tr>
+			<tr>
+				<td>elWidth</td>
+				<td>pixels</td>
+				<td>250</td>
+				<td>Element width (so without border and padding). It is REALLY important to DON'T consider border and padding.</td>
+			</tr>
+			<tr>
+				<td>elHeight</td>
+				<td>pixels</td>
+				<td>automatically calculated</td>
+				<td>Element height (so without border and padding). As default it is pretty good but it <strong>can't</strong> calculate border and padding.</td>
+			</tr>
+			<tr>
+				<td>elInterWidth</td>
+				<td>pixels</td>
+				<td>undefined</td>
+				<td>border-left + padding-left + border-right + padding-right of every element. <strong>It is NOT graphically applyed: It's only to follow your CSS!</strong></td>
+			</tr>
+			<tr>
+				<td>elInterheight</td>
+				<td>pixels</td>
+				<td>undefined</td>
+				<td>border-top + padding-top + border-bottom + padding-bottom of every element (this override the above. <strong>It is NOT graphically applyed: It's only to follow your CSS!</strong></td>
+			</tr>
+			<tr>
+				<td>delay</td>
+				<td>milliseconds</td>
+				<td>200</td>
+				<td>Scroll animation.</td>
+			</tr>
+			<tr>
+				<td>overflow</td>
+				<td>boolean</td>
+				<td>true</td>
+				<td>Turn around when the last element is shown.</td>
+			</tr>
+			<tr>
+				<td>overflowDelay</td>
+				<td>milliseconds</td>
+				<td>500</td>
+				<td>Scroll animation when it turn around.</td>
+			</tr>
+			<tr>
+				<td>step</td>
+				<td>float</td>
+				<td>= windowEls</td>
+				<td>How many elements to scrolls each time.</td>
+			</tr>
+			<tr>
+				<td>interval</td>
+				<td>milliseconds</td>
+				<td>undefined</td>
+				<td>Set a scroll interval.</td>
+			</tr>
+			<tr>
+				<td>width</td>
+				<td>pixel</td>
+				<td>undefined</td>
+				<td>If specified, is the showcase width. It override <code>els</code>.</td>
+			</tr>
+			<tr>
+				<td>els</td>
+				<td>int</td>
+				<td>1</td>
+				<td>How many elements to show? As default it is the width of the showcase (<code>elWidth</code> * <code>els</code>).</td>
+			</tr>
+			<tr>
+				<th rowspan="7">Not really interesting</th>
+				<td>windowSelector</td>
+				<td>CSS selector</td>
+				<td>".show-window"</td>
+				<td>Why you have to change this?</td>
+			</tr>
+			<tr>
+				<td>containerSelector</td>
+				<td>CSS selector</td>
+				<td>".show-container"</td>
+				<td>Why you have to change this?</td>
+			</tr>
+			<tr>
+				<td>elSelector</td>
+				<td>CSS selector</td>
+				<td>".show-el"</td>
+				<td>Why you have to change this?</td>
+			</tr>
+			<tr>
+				<td>actionBackSelector</td>
+				<td>CSS selector</td>
+				<td>".show-back"</td>
+				<td>Why you have to change this?</td>
+			</tr>
+			<tr>
+				<td>actionForwardSelector</td>
+				<td>CSS selector</td>
+				<td>".show-forward"</td>
+				<td>Why you have to change this?</td>
+			</tr>
+			<tr>
+				<td>preventDefault</td>
+				<td>boolean</td>
+				<td>false</td>
+				<td>If you use a link instead of a button probably you don't want that the link is really pressed. So set this to <code>true</code>.</td>
+			</tr>
+			<tr>
+				<td>preventFlood</td>
+				<td>boolean</td>
+				<td>true</td>
+				<td>Prevent the user to scroll during the animation.</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<p>Copyright © 2015 Valerio Bozzolan - Examples under <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.it" title="CC BY SA">CC-By-Sa</a>. Plugin under GNU Affero General Public License.</p>
+</body>
+</html>
