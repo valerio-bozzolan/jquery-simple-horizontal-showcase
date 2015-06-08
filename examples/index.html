@@ -18,14 +18,16 @@
 	</style>
 </head>
 <body>
-	<h1>Horizontal-showcase (jQuery plugin)</h1>
+	<h1>Simple horizontal-showcase<br />(jQuery plugin)</h1>
+	<p>This <b>no-frills</b> horizontal-showcase want to be styled as YOU want (not as I want). So it has only 3-4 CSS rules.</p>
+	<p>The idea is to work without clown clothes.</p>
 
-	<h2>Examples</h2>
+	<h2 id="h-examples">Examples</h2>
 
 	<!--
 		Example 1
 	-->
-	<h3>Without any option</h3>
+	<h3 id="h-example-1">Example 1 - No option</h3>
 	<p>This is the default behavior.</p>
 	<p>The width is fixed to a default value (as you see). Instead, the height grows to the max height in the elements.</p>
 	<p>Called using:<br />
@@ -76,7 +78,7 @@
 	<!--
 		Example 2
 	-->
-	<h3>Specified elements in window</h3>
+	<h3 id="h-example-2">Example 2 -Specified n° of elements</h3>
 	<p>You can set the n° of elements in the single "window". As default, the scroll scrolls as this value (so here two-by-two).</p>
 	<p>Called using:<br />
 		<code>
@@ -128,7 +130,7 @@
 	<!--
 		Example 3
 	-->
-	<h3>Interval, step, delay, ..</h3>
+	<h3 id="h-example-3">Example 3 - Interval, delay, ..</h3>
 	<p>You can set an interval. You can also set a step (step: elements to scroll. It can also be float!).</p>
 	<p>The interval fires <b>only</b> if the user "sleep". This is reeeeeeeeeeeeally friendly.</p>
 	<p>Called using:<br />
@@ -136,7 +138,6 @@
 			$("#example-3").horizontalShowcase({<br />
 			&nbsp;&nbsp;&nbsp;&nbsp;els: 2,<br />
 			&nbsp;&nbsp;&nbsp;&nbsp;interval: 3000,<br />
-			&nbsp;&nbsp;&nbsp;&nbsp;step: 1,<br />
 			&nbsp;&nbsp;&nbsp;&nbsp;delay:1000,<br />
 			&nbsp;&nbsp;&nbsp;&nbsp;overflowDelay:1000<br />
 			});
@@ -179,7 +180,6 @@
 			$("#example-3").horizontalShowcase({
 				els: 2,
 				interval: 3000,
-				step: 1,
 				delay:1000,
 				overflowDelay:1000
 			});
@@ -192,7 +192,7 @@
 	<!--
 		Example 4
 	-->
-	<h3>Element size</h3>
+	<h3 id="h-example-4">Example 4 - Element's size, step, ..</h3>
 	<p>You can set the width of your elements (it will be the same for every element...). The height is automatically calculated, but you can also set it manually.</p>
 	<p>In this example I've also set a <code>float</code> step (here ~1/3=0.3333 peridic, plus a little to turn around at the end of the last element, instead of turn around at the end of the unexisting element after the last element). I've added some colors to show how <code>step</code> works.</p>
 	<p>Called using:<br />
@@ -234,10 +234,11 @@
 	<!--
 		Example 5
 	-->
-	<h3>Custom CSS, custom actions</h3>
+	<h3 id="h-example-5">Example 5 - Adapting to Custom CSS, custom actions, ..</h3>
 	<p>You can set padding and border directly to your <code>.show-el</code> but you have to explain them via options.</p>
-	<p>In this example I've used this CSS rule: <code>#example-5 .show-el {border:10px solid black; padding:30px 40px;}</code>, so if I know CSS, I have to explain that there are 20px (10*2) as horizontal border plus 80px (40*2) as horizontal padding = <code>elInterWidth: 100</code>. Also there are 20px (10*2) as vertical border plus 60px (30*2) as vertical padding = <code>elInterHeight: 80</code>. It's really simple.</p>
+	<p>In this example I've used this CSS rule: <code>#example-5 .show-el {border:10px dashed black; padding:30px 40px;}</code>, so if I know CSS, I have to explain that there are 20px (10*2) as horizontal border plus 80px (40*2) as horizontal padding = <code>elInterWidth: 100</code>. Also there are 20px (10*2) as vertical border plus 60px (30*2) as vertical padding = <code>elInterHeight: 80</code>. It's really simple.</p>
 	<p>I've also used custom links instead of buttons, so I've set <code>preventDefault: true</code> in order to avoid addresses.</p>
+	<p>Note: it does not matter a f**k how you style your action links/buttons.</p>
 	<p>Called using:<br />
 		<code>
 			$("#example-5").horizontalShowcase({<br />
@@ -249,7 +250,7 @@
 	</p>
 
 	<div class="showcase" id="example-5">
-		<a href="#" class="show-back float-left">Back</a>
+		<a href="#" class="show-back custom-box float-left">←</a>
 		<div class="show-window float-left">
 			<div class="show-container">
 				<div class="show-el red">A</div>
@@ -259,7 +260,7 @@
 				<div class="show-el pink">E</div>
 			</div>
 		</div>
-		<a href="#" class="show-forward float-left">Forward</a>
+		<a href="#" class="show-forward custom-box float-left">→</a>
 	</div>
 	<script>
 		$(document).ready(function(e) {
@@ -272,8 +273,15 @@
 	</script>
 	<style type="text/css" media="screen">
 		#example-5 .show-el {
-			border:10px solid black;
+			border:10px dashed black;
 			padding:30px 40px;
+		}
+		#example-5 .custom-box {
+			margin:20px 5px;
+			padding:15px;
+			border:4px dotted #abc;
+			color:red;
+			text-decoration:none;
 		}
 	</style>
 
@@ -284,8 +292,9 @@
 	<!--
 		Example 6
 	-->
-	<h3>Custom callbacks</h3>
+	<h3 id="h-example-6">Example 6 - Custom callbacks</h3>
 	<p>E.g. you can disable buttons when animation is running.</p>
+	<p>Note: in callbacks <code>$(this)</code> will be the action link/button clicked. The first argument will be the showcase element.</p>
 	<p>Called using:<br />
 		<code>
 			$("#example-6").horizontalShowcase({<br />
@@ -324,24 +333,19 @@
 			});
 		});
 	</script>
-	<style type="text/css" media="screen">
-		#example-5 .show-el {
-			border:10px solid black;
-			padding:30px 40px;
-		}
-	</style>
 
 	<div class="clear-both space-up"></div>
 
 
 
-	<h2>Documentation</h2>
+	<h2 id="h-documentation">Documentation</h2>
 
-	<h3>Table of options</h3>
+	<h3 id="h-documentation-options">Options</h3>
+	<p>In pseudo-importance order.</p>
+
 	<table border="1">
 		<thead>
 			<tr>
-				<th></th>
 				<th>Option</th>
 				<th>Type</th>
 				<th>Default</th>
@@ -350,17 +354,22 @@
 		</thead>
 		<tbody>
 			<tr>
-				<th rowspan="13">Interesting</th>
-				<td>click</td>
-				<td>callback</td>
-				<td>function(orizhontalShowcase) {}</td>
-				<td>This function is called when clicking on the scroll back / scroll forward action. <code>$(this)</code> is the action (the button or the link) clicked. <code>$(orizhontalShowcase)</code> is the entire showcase.</td>
+				<td>els</td>
+				<td>int</td>
+				<td>1</td>
+				<td>How many <abbr title="els">elements</abbr> to show? As default it is the width of the showcase (<code>elWidth</code> * <code>els</code>).</td>
 			</tr>
 			<tr>
-				<td>done</td>
-				<td>callback</td>
-				<td>function(orizhontalShowcase) {}</td>
-				<td>This function is called after a click when the scroll animation finishes. <code>$(this)</code> is the action (the button or the link) clicked. <code>$(orizhontalShowcase)</code> is the entire showcase.</td>
+				<td>step</td>
+				<td>float</td>
+				<td>= windowEls</td>
+				<td>How many elements to scrolls each time.</td>
+			</tr>
+			<tr>
+				<td>width</td>
+				<td>pixels</td>
+				<td>undefined</td>
+				<td>If specified, is the showcase width. It override <code>els</code>.</td>
 			</tr>
 			<tr>
 				<td>elWidth</td>
@@ -390,7 +399,7 @@
 				<td>delay</td>
 				<td>milliseconds</td>
 				<td>200</td>
-				<td>Scroll animation.</td>
+				<td>For the scroll animation.</td>
 			</tr>
 			<tr>
 				<td>overflow</td>
@@ -402,13 +411,7 @@
 				<td>overflowDelay</td>
 				<td>milliseconds</td>
 				<td>500</td>
-				<td>Scroll animation when it turn around.</td>
-			</tr>
-			<tr>
-				<td>step</td>
-				<td>float</td>
-				<td>= windowEls</td>
-				<td>How many elements to scrolls each time.</td>
+				<td>For the scroll animation when it turn around.</td>
 			</tr>
 			<tr>
 				<td>interval</td>
@@ -417,19 +420,30 @@
 				<td>Set a scroll interval.</td>
 			</tr>
 			<tr>
-				<td>width</td>
-				<td>pixel</td>
-				<td>undefined</td>
-				<td>If specified, is the showcase width. It override <code>els</code>.</td>
+				<td>click</td>
+				<td>callback</td>
+				<td>function(orizhontalShowcase) {}</td>
+				<td>This function is called when clicking on the scroll back / scroll forward action. <code>$(this)</code> is the action (the button or the link) clicked. <code>$(orizhontalShowcase)</code> is the entire showcase.</td>
 			</tr>
 			<tr>
-				<td>els</td>
-				<td>int</td>
-				<td>1</td>
-				<td>How many elements to show? As default it is the width of the showcase (<code>elWidth</code> * <code>els</code>).</td>
+				<td>done</td>
+				<td>callback</td>
+				<td>function(orizhontalShowcase) {}</td>
+				<td>This function is called after a click when the scroll animation finishes. <code>$(this)</code> is the action (the button or the link) clicked. <code>$(orizhontalShowcase)</code> is the entire showcase.</td>
 			</tr>
 			<tr>
-				<th rowspan="7">Not really interesting</th>
+				<td>preventDefault</td>
+				<td>boolean</td>
+				<td>false</td>
+				<td>If you use a link instead of a button probably you don't want that the link is really followed. So set this to <code>true</code>.</td>
+			</tr>
+			<tr>
+				<td>preventFlood</td>
+				<td>boolean</td>
+				<td>true</td>
+				<td>Prevent the user to scroll during the animation.</td>
+			</tr>
+			<tr>
 				<td>windowSelector</td>
 				<td>CSS selector</td>
 				<td>".show-window"</td>
@@ -458,18 +472,6 @@
 				<td>CSS selector</td>
 				<td>".show-forward"</td>
 				<td>Why you have to change this?</td>
-			</tr>
-			<tr>
-				<td>preventDefault</td>
-				<td>boolean</td>
-				<td>false</td>
-				<td>If you use a link instead of a button probably you don't want that the link is really pressed. So set this to <code>true</code>.</td>
-			</tr>
-			<tr>
-				<td>preventFlood</td>
-				<td>boolean</td>
-				<td>true</td>
-				<td>Prevent the user to scroll during the animation.</td>
 			</tr>
 		</tbody>
 	</table>

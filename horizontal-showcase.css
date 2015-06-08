@@ -16,14 +16,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/*
- * Yes, only 8 CSS rules
- */
+/* Reset */
 .showcase .show-window, .showcase .show-container {
 	border:0;
 	margin:0;
 	padding:0;
 }
+
+/* Yes, only these */
 .showcase .show-window {
 	position:relative;
 	overflow:hidden;
@@ -34,6 +34,8 @@
 .showcase .show-el {
 	float:left;
 }
+
+/* Extra */
 .clear-both {
 	clear:both;
 }
