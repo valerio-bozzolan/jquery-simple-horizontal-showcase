@@ -14,7 +14,7 @@
 		.red {background-color:red !important; }
 		.yellow {background-color:yellow !important;}
 		.pink {background-color:pink !important;}
-		.space-up {padding-top:100px !important;}
+		.space-up {padding-top:80px !important;}
 	</style>
 </head>
 <body>
@@ -22,7 +22,28 @@
 	<p>This <b>no-frills</b> horizontal-showcase want to be styled as YOU want (not as I want). So it has only 3-4 CSS rules.</p>
 	<p>The idea is to work without clown clothes.</p>
 
+	<div class="space-up"></div>
+
+
+
 	<h2 id="h-examples">Examples</h2>
+	<p>In these examples the HTML markup is really clean:</p>
+	<code>
+		&lt;div class=&quot;showcase&quot; id=&quot;example-something&quot;&gt;<br />
+		&nbsp;&nbsp;&nbsp;&nbsp;&lt;button class=&quot;show-back float-left&quot;&gt;Back&lt;/button&gt;<br />
+		&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class=&quot;show-window float-left&quot;&gt;<br />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class=&quot;show-container&quot;&gt;<br />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class=&quot;show-el&quot;&gt;A&lt;/div&gt;<br />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class=&quot;show-el&quot;&gt;B&lt;/div&gt;<br />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class=&quot;show-el&quot;&gt;C&lt;/div&gt;<br />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br />
+		&nbsp;&nbsp;&nbsp;&nbsp;&lt;button class=&quot;show-forward float-left&quot;&gt;Forward&lt;/button&gt;<br />
+		&lt;/div&gt;
+	</code>
+	<p>The <code>float-left</code> is here only as "extra" in e.g. so you can also remove it.</p>
+
+	<div class="space-up"></div>
 
 
 
@@ -480,6 +501,10 @@
 		</tbody>
 	</table>
 
+	<div class="space-up"></div>
+
+
+
 	<h4 id="h-documentation-globals">Setting global default options</h4>
 	<p>It's a fu***ng jQuery plugin, so you have to take advantage of the ability to set global parameters. Like this:<br />
 		<code>
@@ -487,11 +512,11 @@
 			$(".lot-of-showcases").horizontalShowcase(); // It has els: 2
 		</code>
 	</p>
-
 	<p>It's interesting to see that you can create multiple horizontal showcases at once, simply getting a non-single element from the jQuery selector.</p>
 
-
 	<div class="space-up"></div>
+
+
 
 	<p>Copyright © 2015 Valerio Bozzolan - Examples under <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.it" title="CC BY SA">CC-By-Sa</a>. Plugin under <a href="../LICENSE">GNU Affero General Public License</a>.</p>
 </body>
