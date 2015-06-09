@@ -24,6 +24,8 @@
 
 	<h2 id="h-examples">Examples</h2>
 
+
+
 	<!--
 		Example 1
 	-->
@@ -189,6 +191,7 @@
 	<div class="clear-both space-up"></div>
 
 
+
 	<!--
 		Example 4
 	-->
@@ -229,6 +232,7 @@
 	</script>
 
 	<div class="clear-both space-up"></div>
+
 
 
 	<!--
@@ -475,6 +479,19 @@
 			</tr>
 		</tbody>
 	</table>
+
+	<h4 id="h-documentation-globals">Setting global default options</h4>
+	<p>It's a fu***ng jQuery plugin, so you have to take advantage of the ability to set global parameters. Like this:<br />
+		<code>
+			$.fn.horizontalShowcase.defaults.els = 2;<br />
+			$(".lot-of-showcases").horizontalShowcase(); // It has els: 2
+		</code>
+	</p>
+
+	<p>It's interesting to see that you can create multiple horizontal showcases at once, simply getting a non-single element from the jQuery selector.</p>
+
+
+	<div class="space-up"></div>
 
 	<p>Copyright © 2015 Valerio Bozzolan - Examples under <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.it" title="CC BY SA">CC-By-Sa</a>. Plugin under <a href="../LICENSE">GNU Affero General Public License</a>.</p>
 </body>
