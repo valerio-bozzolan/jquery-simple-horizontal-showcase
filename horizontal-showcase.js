@@ -29,7 +29,7 @@
 			if(!opts.elHeight) {
 				var maxVal = -1;
 				$els.each(function() {
-					var h = $(this).height(); 
+					var h = $(this).height();
 					maxVal = h > maxVal ? h : maxVal;
 				});
 				opts.elHeight = maxVal;
@@ -111,7 +111,6 @@
 			});
 
 			restartInterval();
-
 		});
 	};
 	$.fn.horizontalShowcase.defaults = {
